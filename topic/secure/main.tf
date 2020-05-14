@@ -18,7 +18,7 @@ module "secret_endpoint" {
   keyvault_id           = var.keyvault_id
   
   name                  = "${var.secret_prefix}-Endpoint"
-  value                 = azurerm_eventgrid_topic.eventgrid.endpoint
+  value                 = azurerm_eventgrid_topic.topic.endpoint
 
   app_name              = var.app_name
   env_name              = var.env_name
@@ -32,7 +32,7 @@ module "secret_accesskey" {
   keyvault_id           = var.keyvault_id
   
   name                  = "${var.secret_prefix}-AccessKey"
-  value                 = azurerm_eventgrid_topic.eventgrid.endpoint
+  value                 = azurerm_eventgrid_topic.topic.endpoint
 
   app_name              = var.app_name
   env_name              = var.env_name
