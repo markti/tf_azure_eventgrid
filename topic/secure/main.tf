@@ -1,4 +1,5 @@
 resource "azurerm_eventgrid_topic" "topic" {
+
   name                = var.name
   location            = var.location
   resource_group_name = var.resource_group_name
@@ -18,7 +19,7 @@ module "secret_endpoint" {
   resource_group_name   = var.resource_group_name
   keyvault_id           = var.keyvault_id
   
-  name                  = "${var.secret_name}-Endpoint"
+  name                  = "${var.secret_prefix}-Endpoint"
   value                 = azurerm_eventgrid_topic.eventgrid.endpoint
 
   app_name              = var.app_name
