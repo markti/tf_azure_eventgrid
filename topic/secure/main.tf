@@ -15,8 +15,6 @@ module "secret_endpoint" {
 
   source                = "github.com/markti/tf_azure_keyvault/secret"
 
-  location              = var.location
-  resource_group_name   = var.resource_group_name
   keyvault_id           = var.keyvault_id
   
   name                  = "${var.secret_prefix}-Endpoint"
@@ -31,8 +29,6 @@ module "secret_accesskey" {
   
   source                = "github.com/markti/tf_azure_keyvault/secret"
 
-  location              = var.location
-  resource_group_name   = var.resource_group_name
   keyvault_id           = var.keyvault_id
   
   name                  = "${var.secret_prefix}-AccessKey"
