@@ -1,15 +1,18 @@
-resource "azurerm_eventgrid_topic" "topic" {
 
-  name                = var.name
-  location            = var.location
-  resource_group_name = var.resource_group_name
 
-  tags = {
-    app = var.app_name
-    env = var.env_name
-  }
+module "topic" {
 
+  source                = "../base"
+
+  location              = var.location
+  resource_group_name   = var.resource_group_name
+
+  name                  = var.name
+  app_name              = var.app_name
+  env_name              = var.env_name
+  
 }
+
 
 module "secret_endpoint" {
 
@@ -32,7 +35,7 @@ module "secret_accesskey" {
   keyvault_id           = var.keyvault_id
   
   name                  = "${var.secret_prefix}-AccessKey"
-  value                 = azurerm_eventgrid_topic.topic.endpoint
+  value                 = azurerm_eventgrid_topic.topic.primary_access_key
 
   app_name              = var.app_name
   env_name              = var.env_name
